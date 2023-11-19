@@ -154,7 +154,7 @@ def show_posts(user : User, filtered_posts: [Post], user_will_comment : bool) ->
     post = filtered_posts[int(new_op)-1]
     clear()
     #TODO: Imprimir bien el Post
-    print(f"\t\tCaption:{post.get_caption()}\n\t\tTags:{"#"+" #".join(post.get_tags())}\n\t\tFecha:{post.get_date()}\n\t\tTipo:{post.get_type()}\n\t\t{post.get_multimedia()}\n\t\tAutor: @{post.get_publisher().get_username()}")
+    print(f"\t\tCaption:{post.get_caption()}\n\t\tTags:{'#'+' #'.join(post.get_tags())}\n\t\tFecha:{post.get_date()}\n\t\tTipo:{post.get_type()}\n\t\t{post.get_multimedia()}\n\t\tAutor: @{post.get_publisher().get_username()}")
 
     post.print_interactions()
     
@@ -260,6 +260,8 @@ def redirect_to_user_profile(interactions: dict) -> None:
 
     if op == "n":
         return
+    if not interactions:
+        message("\t\t No se encontraron resultados")
     
     op2 = input("\t\tIndique el numero de la interacción para ver el perfil del usuario que la realizó: ")
     interactions = [ interactions[key] for key in interactions.keys()]
@@ -267,17 +269,21 @@ def redirect_to_user_profile(interactions: dict) -> None:
         print("\t\tOpción inválida...")
         op2 = input("\t\tIndique el numero de la interacción para ver el perfil del usuario que la realizó: ")
 
-    user_profile = interactions[int(op2)-1][0].get_user()
-    print("\n\t\tPerfil de usuario\n")
-    print(f"\t\tNombre: {user_profile.get_name()}")
-    print(f"\t\tEmail: {user_profile.get_email()}")
-    print(f"\t\tNombre de usuario: @{user_profile.get_username()}")
-    print(f"\t\tTipo de usuario: {user_profile.get_type()}")
-    print(f"\t\t{"Carrera" if user_profile.get_type() == "student" else "Departamento"}: {user_profile.get_career()}")
-    print("\n\t\tPublicaciones:")
-    user_profile.print_posts()
-    input("\t\tPresione enter para continuar...")
-    clear()
+    try:
+        user_profile = interactions[int(op2)-1][0].get_user()
+        print("\n\t\tPerfil de usuario\n")
+        print(f"\t\tNombre: {user_profile.get_name()}")
+        print(f"\t\tEmail: {user_profile.get_email()}")
+        print(f"\t\tNombre de usuario: @{user_profile.get_username()}")
+        print(f"\t\tTipo de usuario: {user_profile.get_type()}")
+        print(f"\t\t{'Carrera' if user_profile.get_type() == 'student' else 'Departamento'}: {user_profile.get_career()}")
+        print("\n\t\tPublicaciones:")
+        user_profile.print_posts()
+    except:
+        message("\t\tNo se encontraron resultados")
+        return
+    
+    
 
 def message(message : str) -> None:
     """

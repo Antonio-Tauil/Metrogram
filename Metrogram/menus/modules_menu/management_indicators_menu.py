@@ -179,7 +179,7 @@ def post_with_more_interactions(posts : [Post]) -> [Post]:
     posts_copy.sort(key=lambda post: len(post.get_interactions().get("likes") + post.get_interactions().get("comments")), reverse=True)
 
     post_ = posts_copy[0]
-    print(f"\t\t{post_.get_caption()[:120]} cantidad de interacciones: {len(post_.get_interactions().get("likes") + post_.get_interactions().get("comments"))}")
+    print(f"\t\t{post_.get_caption()[:120]} cantidad de interacciones: {len(post_.get_interactions().get('likes') + post_.get_interactions().get('comments'))}")
 
     will_view_graph = input("\n\t\t¿Desea ver el gráfico? (s/n): ")
 
@@ -321,7 +321,7 @@ def _deleted_users(deleted_users : [User]) -> [User]:
     """
     clear()
     for deleted_user in deleted_users:
-        print(f"\t\t{" ".join(deleted_user.split(" ")[1:])}")
+        print(f"\t\t{' '.join(deleted_user.split(' ')[1:])}")
 
     will_show = input("\t\tDesea ver el grafico?(s/n)")
 

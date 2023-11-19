@@ -45,7 +45,7 @@ def edit_profile_menu(user: User, users: [User]) -> None:
         elif op == "4":
             career = input(f"\t\t{_type}: ")
             user.set_career(career)
-            message(f"\t\t{_type} modificad{"a" if _type == "carrera" else "o"} con éxito!")
+            message(f"\t\t{_type} modificad{'a' if _type == 'carrera' else 'o'} con éxito!")
 
         elif op == "0":
             clear()

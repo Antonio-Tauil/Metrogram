@@ -55,7 +55,11 @@ def save_data(users: [User], posts : [Post], deleted_users : [str], deleted_post
     
     with open("users.txt", "w", encoding="utf-8") as file:
         for idx,user in enumerate(users):
-            file.write(f"{user} {"\n" if idx != len(users)-1 else ''}")
+            if idx != len(users) -1 :
+                file.write(f"{user} \n")
+            else:
+                file.write(f"{user}")
+            #file.write(f"{user} {"\n" if idx != len(users)-1 else ''}")
 
     with open("followings.txt","w") as f:
         for user in users:
@@ -64,7 +68,11 @@ def save_data(users: [User], posts : [Post], deleted_users : [str], deleted_post
 
     with open("posts.txt","w", encoding="utf-8") as fs:
         for idx,post in enumerate(posts):
-            fs.write(f"{post} {'\n' if idx != len(posts)-1 else ''}")
+            if idx != len(posts) -1 :
+                fs.write(f"{post} \n")
+            else:
+                fs.write(f"{post}")
+            #fs.write(f"{post} {"\n" if idx != len(posts)-1 else ''}")
 
     with open("likes.txt","w") as fa:
         for post in posts:

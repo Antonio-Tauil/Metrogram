@@ -56,10 +56,10 @@ def select_profile(current_user: User, show: bool, results : [User], is_to_follo
         return
     
     # opcion de ver el perfil de alguno de los usuarios encontrados basado en indice
-    op = input(f"\t\tIngrese el numero de perfil que desea {"seguir" if is_to_follow else "ver"}: ")
+    op = input(f"\t\tIngrese el numero de perfil que desea {'seguir' if is_to_follow else 'ver'}: ")
     while not op.isdigit() or int(op) > len(results) or int(op) < 1:
         print("\t\tOpcion invalida")
-        op = input(f"\t\tIngrese el numero de perfil que desea {"seguir" if is_to_follow else "ver"}: ")
+        op = input(f"\t\tIngrese el numero de perfil que desea {'seguir' if is_to_follow else 'ver'}: ")
 
     clear()
     profile : User = results[int(op)-1]
@@ -99,7 +99,7 @@ def select_profile(current_user: User, show: bool, results : [User], is_to_follo
         
         print(f"\t\t{profile.get_name()} {profile.get_username()}")
         for idx,post in enumerate(profile.get_posts()):
-            print(f"\t\t{idx+1}.- {post.get_caption()[:50]+"..." if len(post.get_caption()) > 50 else post.get_caption()}")
+            print(f"\t\t{idx+1}.- {post.get_caption()[:50]+'...' if len(post.get_caption()) > 50 else post.get_caption()}")
         
         view_post = input("\t\tDesea ver alguno de los posts? (s/n)")
         while view_post not in ["s","n", "S", "N"]:

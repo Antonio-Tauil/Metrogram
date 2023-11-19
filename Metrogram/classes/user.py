@@ -142,7 +142,7 @@ class User:
             print()
             print(f"\t\tDescripción: {post.get_caption()}")
             print(f"\t\tFecha: {post.get_date()}")
-            print(f"\t\tTags: {"#"+" #".join(post.get_tags())}")
+            print(f"\t\tTags: {'#'+' #'.join(post.get_tags())}")
             print(f"\t\tTipo de Publicación: {post.get_type()}")
             print(f"\t\tMultimedia: {post.get_multimedia()}")
 

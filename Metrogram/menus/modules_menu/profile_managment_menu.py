@@ -115,7 +115,7 @@ def show_user(user):
     print(f"\t\tEmail: {user.get_email()}")
     print(f"\t\tNombre de usuario: @{user.get_username()}")
     print(f"\t\tTipo de usuario: {user.get_type()}")
-    print(f"\t\t{"Carrera" if user.get_type() == "student" else "Departamento"}: {user.get_career()}")
+    print(f"\t\t{'Carrera' if user.get_type() == 'student' else 'Departamento'}: {user.get_career()}")
     print("\n\t\tPublicaciones:")
     user.print_posts()
     input("\t\tPresione enter para continuar...")
